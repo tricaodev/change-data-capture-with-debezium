@@ -1,0 +1,18 @@
+curl -X POST http://debezium:8083/connectors \
+  -H "Content-Type: application/json" \
+  -d '{
+  "name": "cdc-financial-db",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "connector.displayName": "PostgreSQL",
+    "topic.prefix": "financial",
+    "database.user": "admin",
+    "database.dbname": "financial_db",
+    "decimal.handling.mode": "double",
+    "database.hostname": "postgres",
+    "database.password": "postgres",
+    "name": "cdc-financial-db",
+    "connector.id": "postgres",
+    "plugin.name": "pgoutput"
+  }
+}'

@@ -49,6 +49,10 @@ def create_table(cursor, table_name):
         )
     """)
 
+    cursor.execute(f"""
+        ALTER TABLE {table_name} REPLICA IDENTITY FULL
+    """)
+
 def insert_data(cursor, table_name, data):
     cursor.execute(f"""
         INSERT INTO {table_name} (transactionId, username, timestamp, amount, currency, city, country, merchantName, paymentMethod, ipAddress, voucherCode, affiliateId)
